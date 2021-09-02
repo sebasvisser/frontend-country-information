@@ -10,7 +10,7 @@ async function findCountryData(event) {
         const subAreaName = result.data[0].subregion;
         console.log(`${countryName} is situated in ${subAreaName}. It has a population of ${population} people.`)
 
-        // OPDRACHT 2 hoofdstad loggen
+        // OPDRACHT 3 hoofdstad loggen
         const city = result.data[0].capital;
         console.log(`The capital is ${city}`);
         // EINDE hoofdstad loggen
