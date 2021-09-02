@@ -86,15 +86,33 @@ async function findCountryData(event) {
     } catch (error) {
         console.log(error);
         const errorMessage = `Het land ${event} bestaat niet`;
+        console.error(errorMessage);
         const resultingError = document.createElement("p");
         resultingError.textContent = errorMessage;
         document.getElementById("resultHeader").appendChild(resultingError);
     }
 }
 
+async function clearResults() {
+    try {
+        console.log("Ik wil opruimen")
+        const headerToClear = document.getElementById("resultHeader");
+        while (headerToClear.firstChild) {
+            headerToClear.removeChild(headerToClear.lastChild);
+        }
+        const bodyToClear = document.getElementById("resultBody");
+        while (bodyToClear.firstChild) {
+            bodyToClear.removeChild(bodyToClear.lastChild);
+        }
+    } catch (error){
+        console.log("Nothing to Clear")
+    }
+}
+
 button.addEventListener('click', function (event){
     const inputFieldSays = document.getElementById("searchfield").value;
     findCountryData(inputFieldSays);
+    clearResults();
     document.getElementById("searchfield").value = ``;
 });
 
@@ -103,6 +121,7 @@ inputField.addEventListener('keypress', function (event) {
     if (event.key === 'Enter') {
         const inputFieldSays = document.getElementById("searchfield").value;
         findCountryData(inputFieldSays);
+        clearResults();
         document.getElementById("searchfield").value = ``;
     }
 });
