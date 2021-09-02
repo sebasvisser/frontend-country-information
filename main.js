@@ -35,6 +35,10 @@ async function findCountryData(event) {
 
         // OPDRACHT 6 Languages
 
+
+
+
+
         // EINDE opdracht 6 languages
 
         // OPDRACHT 7 Toevoegen aan DOM
@@ -81,6 +85,10 @@ async function findCountryData(event) {
         // EINDE oprdacht 7 toevoegen aan DOM
     } catch (error) {
         console.log(error);
+        const errorMessage = "Dat land bestaat niet";
+        const resultingError = document.createElement("p");
+        resultingError.textContent = errorMessage;
+        document.getElementById("resultHeader").appendChild(resultingError);
     }
 }
 
