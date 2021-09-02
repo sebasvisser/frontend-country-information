@@ -2,7 +2,7 @@ const button = document.getElementById("find-button");
 
 async function findCountryData(event) {
     try {
-        const name = "bhutan";
+        const name = event;
         const result = await axios.get(`https://restcountries.eu/rest/v2/name/${name}`);
         // dev log
         console.log(result);
@@ -85,7 +85,7 @@ async function findCountryData(event) {
         // EINDE oprdacht 7 toevoegen aan DOM
     } catch (error) {
         console.log(error);
-        const errorMessage = "Dat land bestaat niet";
+        const errorMessage = `Het land ${event} bestaat niet`;
         const resultingError = document.createElement("p");
         resultingError.textContent = errorMessage;
         document.getElementById("resultHeader").appendChild(resultingError);
@@ -93,6 +93,7 @@ async function findCountryData(event) {
 }
 
 button.addEventListener('click', function (event){
-    console.log(event);
-    findCountryData(event);
+    const inputFieldSays = document.getElementById("searchfield").value;
+    console.log(inputFieldSays);
+    findCountryData(inputFieldSays);
 });
