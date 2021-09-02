@@ -21,7 +21,6 @@ async function findCountryData(event) {
         // EINDE hoofdstad loggen
 
         // OPDRACHT 4 Currencies loggen
-
         if (result.data[0].currencies.length === 1) {
             const currency = result.data[0].currencies[0].name;
             console.log(` and you can pay with ${currency}`);
@@ -34,11 +33,40 @@ async function findCountryData(event) {
         }
         // EINDE opdracht 4 Currencies loggen
 
+        // OPDRACHT 6 Languages
+
+        // EINDE opdracht 6 languages
+
+        // OPDRACHT 7 Toevoegen aan DOM
+        // eerst de vlag
+        const resultFlagImage = result.data[0].flag;
+        const resultingFlag = document.createElement("img");
+        resultingFlag.src = resultFlagImage;
+        document.getElementById('resultHeader').appendChild(resultingFlag);
+        // Dan de naam van het land
+        const resultCountryName = result.data[0].name;
+        console.log(resultCountryName);
+        const resultingCountry = document.createElement("span");
+        resultingCountry.span = resultCountryName;
+        document.getElementById("resultHeader").appendChild(resultingCountry);
+
+        // alle benodigde info verzamelen
+        const resultSituationStatement = 3;
+        const resultCurrencyStatement = 4;
+        const resultLanguageStatement = 5;
+        const resultNode = document.createElement("p");
+        const extraText = document.createTextNode(result.data[0].currencies[0].name);
+
+
+        resultNode.appendChild(extraText);
+        document.getElementById("resultingdiv").appendChild(resultNode);
+        // EINDE oprdacht 7 toevoegen aan DOM
     } catch (error) {
         console.log(error);
     }
 }
 
 button.addEventListener('click', function (event){
+    console.log(event);
     findCountryData(event);
 });
