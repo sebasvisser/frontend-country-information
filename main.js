@@ -94,6 +94,13 @@ async function findCountryData(event) {
 
 button.addEventListener('click', function (event){
     const inputFieldSays = document.getElementById("searchfield").value;
-    console.log(inputFieldSays);
     findCountryData(inputFieldSays);
+});
+
+const inputField = document.getElementById("searchfield");
+inputField.addEventListener('keypress', function (event) {
+    if (event.key === 'Enter') {
+        const inputFieldSays = document.getElementById("searchfield").value;
+        findCountryData(inputFieldSays);
+    }
 });
