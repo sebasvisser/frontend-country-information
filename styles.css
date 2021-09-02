@@ -69,7 +69,7 @@
     align-self: stretch;
     justify-self: stretch;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     padding: 2px 16px;
 }
 
@@ -77,7 +77,7 @@
     grid-area: i;
 }
 
-h1 {
+h1 , #resultCountryName {
     font-family: 'Nanum Pen Script', cursive;
     font-size: 50px;
 }
@@ -103,11 +103,22 @@ button {
 }
 
 span {
-
-    justify-self: center;
+    justify-self: flex-start;
 }
 
 #resultHeader > img {
     border-radius: 8px;
-    width: 50px;
+    width: 65px;
+    height: 40px;
+}
+
+#resultHeader {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: baseline;
+    flex-wrap: wrap;
+}
+
+#resultCountryName {
+    padding-left: 15px;
 }

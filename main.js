@@ -43,23 +43,24 @@ async function findCountryData(event) {
         const resultingFlag = document.createElement("img");
         resultingFlag.src = resultFlagImage;
         document.getElementById('resultHeader').appendChild(resultingFlag);
+
         // Dan de naam van het land
         const resultCountryName = result.data[0].name;
-        console.log(resultCountryName);
         const resultingCountry = document.createElement("span");
-        resultingCountry.span = resultCountryName;
+        resultingCountry.setAttribute("id","resultCountryName")
+        resultingCountry.textContent = resultCountryName;
         document.getElementById("resultHeader").appendChild(resultingCountry);
 
+        // Dan een mooie lijn toevoegen
         // alle benodigde info verzamelen
         const resultSituationStatement = 3;
         const resultCurrencyStatement = 4;
         const resultLanguageStatement = 5;
-        const resultNode = document.createElement("p");
-        const extraText = document.createTextNode(result.data[0].currencies[0].name);
-
-
-        resultNode.appendChild(extraText);
-        document.getElementById("resultingdiv").appendChild(resultNode);
+        // const resultNode = document.createElement("p");
+        // const extraText = document.createTextNode(result.data[0].currencies[0].name);
+        //
+        // resultNode.appendChild(extraText);
+        // document.getElementById("resultingdiv").appendChild(resultNode);
         // EINDE oprdacht 7 toevoegen aan DOM
     } catch (error) {
         console.log(error);
