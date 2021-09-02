@@ -51,16 +51,33 @@ async function findCountryData(event) {
         resultingCountry.textContent = resultCountryName;
         document.getElementById("resultHeader").appendChild(resultingCountry);
 
-        // Dan een mooie lijn toevoegen
-        // alle benodigde info verzamelen
-        const resultSituationStatement = 3;
-        const resultCurrencyStatement = 4;
-        const resultLanguageStatement = 5;
-        // const resultNode = document.createElement("p");
-        // const extraText = document.createTextNode(result.data[0].currencies[0].name);
-        //
-        // resultNode.appendChild(extraText);
-        // document.getElementById("resultingdiv").appendChild(resultNode);
+        // Regel 1
+        const resultBodyLineOne = `${countryName} is situated in ${subAreaName}. It has a population of ${population} people.`;
+        const lineOne = document.createElement("p");
+        lineOne.textContent = resultBodyLineOne;
+        document.getElementById("resultBody").appendChild(lineOne);
+
+        // Regel 2
+        let resultBodyLineTwo;
+        if (result.data[0].currencies.length === 1) {
+            const currency = result.data[0].currencies[0].name;
+            resultBodyLineTwo = `The capital is ${city} and you can pay with ${currency}`;
+        } else if (result.data[0].currencies.length === 2) {
+            const currencyOne = result.data[0].currencies[0].name;
+            const currencyTwo = result.data[0].currencies[1].name;
+            resultBodyLineTwo = `The capital is ${city} and you can pay with ${currencyOne} and ${currencyTwo}.`;
+        }
+        const lineTwo = document.createElement("p");
+        lineTwo.textContent = resultBodyLineTwo;
+        document.getElementById("resultBody").appendChild(lineTwo);
+
+        // Regel 3
+        let resultBodyLineThree ;
+        // IF STATEMENT MET FOR-LOOP voor de talen
+        resultBodyLineThree = "ze spreken talen";
+        const lineThree = document.createElement("p");
+        lineThree.textContent = resultBodyLineThree;
+        document.getElementById("resultBody").appendChild(lineThree);
         // EINDE oprdacht 7 toevoegen aan DOM
     } catch (error) {
         console.log(error);

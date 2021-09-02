@@ -82,6 +82,12 @@ h1 , #resultCountryName {
     font-size: 50px;
 }
 
+p {
+    font-family: Avenir;
+    font-weight: bold;
+    font-size: 12px;
+}
+
 input, button {
     border: black solid 1px;
     margin: 0;
@@ -121,4 +127,10 @@ span {
 
 #resultCountryName {
     padding-left: 15px;
+}
+
+#resultBody {
+    /* Mooi lijntje*/
+    margin: 3px 0px;
+    border-top: 2px solid dimgrey;
 }
