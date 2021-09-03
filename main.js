@@ -17,27 +17,23 @@ async function findCountryData(event) {
 
         // OPDRACHT 3 hoofdstad loggen
         const city = result.data[0].capital;
-        console.log(`The capital is ${city}`);
+        console.log(`The capital is ${city}.`);
         // EINDE hoofdstad loggen
 
         // OPDRACHT 4 Currencies loggen
         if (result.data[0].currencies.length === 1) {
             const currency = result.data[0].currencies[0].name;
-            console.log(` and you can pay with ${currency}`);
+            console.log(` and you can pay with ${currency}.`);
         } else if (result.data[0].currencies.length === 2) {
             const currencyOne = result.data[0].currencies[0].name;
             const currencyTwo = result.data[0].currencies[1].name;
-            console.log(` and you can pay with ${currencyOne} and ${currencyTwo}`);
+            console.log(` and you can pay with ${currencyOne} and ${currencyTwo}.`);
         } else {
             console.log("Hier kun je echt met veel verschillende valuta betalen...")
         }
         // EINDE opdracht 4 Currencies loggen
 
         // OPDRACHT 6 Languages
-    // nieuwe array-variabele aanmaken met de languages
-        // op basis van lengte een if statement doorlopen
-        // bij 3 of hoger, zin in 2 delen, taal 1 en 2 meteen, taal 3 en meer via forloopje
-
         let spokenLanguagesSentence; //verzamelvariabele
         const spokenLanguages = result.data[0].languages;
         if (spokenLanguages.length === 1) {
@@ -45,15 +41,22 @@ async function findCountryData(event) {
             spokenLanguagesSentence = `They speak ${languageSpoken}.`;
         } else if (spokenLanguages.length === 2) {
             const languageSpokenOne = result.data[0].languages[0].name;
-            const languageSpokenTwo = result.data[0].language[1].name;
+            const languageSpokenTwo = result.data[0].languages[1].name;
             spokenLanguagesSentence = `They speak ${languageSpokenOne} and ${languageSpokenTwo}.`;
-        }else if (spokenLanguages.length > 2) {
-            console.log("2 of meer talen")
+        } else if (spokenLanguages.length > 2) {
+            const languageSpokenOne = result.data[0].languages[0].name;
+            const languageSpokenTwo = result.data[0].languages[1].name;
+            spokenLanguagesSentence = `They speak ${languageSpokenOne}`;
+            for (let i = 1; i < (spokenLanguages.length-1); i++) {
+                spokenLanguagesSentence += `, ${result.data[0].languages[i].name}`;
+            };
+            const lastLanguageIndex = spokenLanguages.length-1;
+            const lastLanguage = result.data[0].languages[lastLanguageIndex].name;
+            spokenLanguagesSentence += ` and ${lastLanguage}.`;
         }else {
             console.error("No languages?")
         }
         console.log(spokenLanguagesSentence);
-
         // EINDE opdracht 6 languages
 
         // OPDRACHT 7 Toevoegen aan DOM
@@ -91,13 +94,12 @@ async function findCountryData(event) {
         document.getElementById("resultBody").appendChild(lineTwo);
 
         // Regel 3
-        let resultBodyLineThree ;
-        // IF STATEMENT MET FOR-LOOP voor de talen
-        resultBodyLineThree = "ze spreken talen";
+        let resultBodyLineThree; // ter verduidelijking als aparte variabele
+        resultBodyLineThree = spokenLanguagesSentence;
         const lineThree = document.createElement("p");
         lineThree.textContent = resultBodyLineThree;
         document.getElementById("resultBody").appendChild(lineThree);
-        // EINDE oprdacht 7 toevoegen aan DOM
+        // EINDE opdracht 7 toevoegen aan DOM
     } catch (error) {
         console.log(error);
         const errorMessage = `Het land ${event} bestaat niet`;
