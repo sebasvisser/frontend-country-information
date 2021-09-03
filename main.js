@@ -34,10 +34,25 @@ async function findCountryData(event) {
         // EINDE opdracht 4 Currencies loggen
 
         // OPDRACHT 6 Languages
+    // nieuwe array-variabele aanmaken met de languages
+        // op basis van lengte een if statement doorlopen
+        // bij 3 of hoger, zin in 2 delen, taal 1 en 2 meteen, taal 3 en meer via forloopje
 
-
-
-
+        let spokenLanguagesSentence; //verzamelvariabele
+        const spokenLanguages = result.data[0].languages;
+        if (spokenLanguages.length === 1) {
+            const languageSpoken = result.data[0].languages[0].name;
+            spokenLanguagesSentence = `They speak ${languageSpoken}.`;
+        } else if (spokenLanguages.length === 2) {
+            const languageSpokenOne = result.data[0].languages[0].name;
+            const languageSpokenTwo = result.data[0].language[1].name;
+            spokenLanguagesSentence = `They speak ${languageSpokenOne} and ${languageSpokenTwo}.`;
+        }else if (spokenLanguages.length > 2) {
+            console.log("2 of meer talen")
+        }else {
+            console.error("No languages?")
+        }
+        console.log(spokenLanguagesSentence);
 
         // EINDE opdracht 6 languages
 
