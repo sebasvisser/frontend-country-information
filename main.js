@@ -131,6 +131,7 @@ button.addEventListener('click', function (event){
     findCountryData(inputFieldSays);
     clearResults();
     document.getElementById("searchfield").value = ``;
+    document.getElementById("searchfield").placeholder = `${inputFieldSays}`;
 });
 
 const inputField = document.getElementById("searchfield");
@@ -140,5 +141,6 @@ inputField.addEventListener('keypress', function (event) {
         findCountryData(inputFieldSays);
         clearResults();
         document.getElementById("searchfield").value = ``;
+        document.getElementById("searchfield").placeholder = `${inputFieldSays}`;
     }
 });
